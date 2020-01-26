@@ -2,13 +2,14 @@ import pygame
 import random
 from pygame.transform import scale
 import time
+import os
 
 class Asteroid(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = scale(pygame.image.load("car1.png"), (150 , 300))
-        self.rect = pygame.Rect(x, y, 150 , 300)
+        self.image = scale(pygame.image.load("car1.png"), (140 , 280))
+        self.rect = pygame.Rect(x, y, 140 , 280)
         self.yvel = level #####################
 
     def draw(self, screen):
@@ -24,8 +25,8 @@ class Spaceship(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
 
-        self.rect = pygame.Rect(x, y, 100, 200)
-        self.image = scale(pygame.image.load("car2.png"), (150, 300))
+        self.rect = pygame.Rect(x, y, 140, 280)
+        self.image = scale(pygame.image.load("car2.png"), (140, 280))
         self.xvel = 0
         # добавим кораблю здоровье
         self.life = 100
@@ -37,12 +38,25 @@ class Spaceship(pygame.sprite.Sprite):
     def update(self, left, right, asteroids):
         if left:
             self.xvel -= 2
+            ''' if self.xvel < 0:
+                 self.xvel = 0
+            elif self.xvel > 1280:
+                self.xvel = 1280'''
+
 
         if right:
             self.xvel += 2
+            '''if self.xvel < 0:
+                self.xvel = 0
+            elif self.xvel > 1280:
+                self.xvel = 1280'''
+
+
 
         if not (left or right):
             self.xvel = 0
+        
+
 
         self.rect.x += self.xvel
 
@@ -59,7 +73,7 @@ pygame.display.set_caption("Asteroids")
 
 sky = scale(pygame.image.load("road.png"), (1280, 1024))
 
-ship = Spaceship(400, 400)
+ship = Spaceship(700, 400)
 
 left = False
 right = False
@@ -68,7 +82,7 @@ asteroids = pygame.sprite.Group()
 
 
 ####################
-level = 10
+level = 15
 ####################
 
 
@@ -109,11 +123,12 @@ while ship.life > 0:
         asteroid.update()
         asteroid.draw(screen)
 
-    life = font.render(f'HP: {ship.life}', False, (255, 255, 255))
-    screen.blit(life, (20, 20))
+    #life = font.render(f'HP: {ship.life}', False, (255, 255, 255))
+    #screen.blit(life, (20, 20))
 
     pygame.display.update()
 else:
+    
     ''''time.sleep(10)
   scale(pygame.image.load("gameover.png"), (1280, 1024))
     time.delay'''
