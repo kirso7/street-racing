@@ -8,7 +8,13 @@ class Asteroid(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = scale(pygame.image.load("car1.png"), (140 , 280))
+        qqq = random.randint(1, 3)
+        if qqq ==1:
+            self.image = scale(pygame.image.load("car1.png"), (140, 280))
+        if qqq == 2:
+            self.image = scale(pygame.image.load("car3.png"), (140, 280))
+        if qqq == 3:
+            self.image = scale(pygame.image.load("car4.png"), (140, 280))
         self.rect = pygame.Rect(x, y, 140 , 280)
         self.yvel = level #####################
 
