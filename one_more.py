@@ -15,7 +15,7 @@ class Asteroid(pygame.sprite.Sprite):
             self.image = scale(pygame.image.load("car3.png"), (140, 280))
         if qqq == 3:
             self.image = scale(pygame.image.load("car4.png"), (140, 280))
-        self.rect = pygame.Rect(x, y, 140 , 280)
+        self.rect = pygame.Rect(x, y, 120 , 260)
         self.yvel = level #####################
 
     def draw(self, screen):
@@ -31,7 +31,7 @@ class Spaceship(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
 
-        self.rect = pygame.Rect(x, y, 140, 280)
+        self.rect = pygame.Rect(x, y, 120, 260)
         self.image = scale(pygame.image.load("car2.png"), (140, 280))
         self.xvel = 0
         # добавим кораблю здоровье
@@ -88,7 +88,7 @@ asteroids = pygame.sprite.Group()
 
 
 ####################
-level = 15
+level = 10
 ####################
 
 
